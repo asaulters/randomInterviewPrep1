@@ -132,3 +132,45 @@ function findIndex(arr, str) {
 }
 
 findIndex(['a', 'b', 'c', 'd', 'e', 'f'], 'f')
+
+
+
+
+
+// A word is on the loose and now has tried to hide amongst a crowd of tall letters! Help write a function 
+// to detect what the word is, knowing the following rules:
+
+// The wanted word is in lowercase.
+// The crowd of letters is all in uppercase.
+// Note that the word will be spread out amongst the random letters, but their letters remain in the same order.
+// G - Find the word based upon the rules given
+// match based upon lowercase
+
+function detectWord(str) {
+	const lowerRules = /[a-z]/g;
+	const wordArr = str.match(lowerRules);
+    return wordArr.join('');
+}
+
+detectWord("UcUNFYGaFYFYGtNUH")
+
+
+// Create a function that finds the index of a given item.
+// find the index 
+// if index isnt there, return -1
+
+function search(arr, item) {
+	return arr.indexOf(item);
+}
+
+// Create a function to concatenate two integer arrays.
+
+
+function concat(arr1, arr2) {
+	return arr1.concat(arr2)
+	}
+
+
+
+
+
