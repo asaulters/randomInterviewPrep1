@@ -171,6 +171,74 @@ function concat(arr1, arr2) {
 	}
 
 
+    // Create a method in the Person class which returns how another person's age compares. 
+    // Given the instances p1, p2 and p3, which will be initialised with the attributes name and 
+    // age, return a sentence in the following format:
+
+    // {other person name} is {older than / younger than / the same age as} me.
+
+// G - order ages based upon given person
 
 
+// class Person {
+// 	constructor(name, age) {
+// 		this.name = name;
+// 		this.age = age;
+// 	}
+
+// 	compareAge(other) {
+//         p1 = new Person("Samuel", 24)
+//         p2 = new Person("Joel", 36)
+//         p3 = new Person("Lily", 24)
+
+// 		// Write code here!
+
+		
+// 	}
+// }
+
+
+// 
+
+function word(s) {
+	const words = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];
+    console.log(words.indexOf(s)) 
+}
+
+word("nine");
+
+// Create a function that searches for the index of a given item in an array. If the item is present, it 
+// should return the index, otherwise, it should return -1.
+// G - what is the index of the given item in an array
+// use indexOf to search arr
+
+function search(arr, item) {
+	console.log(arr.indexOf(item))
+}
+
+search([2, 4, 6, 8, 10], 8)
+
+// You need to create two functions to substitute toString() and parseInt(); A function called intToString() that converts integers
+// into strings and a function called stringToInt() that converts strings into integers.
+// G - change string to int or vice versa
+function intToString(num) {
+	return num.toString()
+}
+
+
+function stringToInt(num) {
+	return parseInt(num)
+}
+
+// Given a Rubik's Cube with a side length of n, return the number of individual stickers that are needed to cover the whole cube.
+// g - How many stickers does a cube with a side length of n have
+// determine the exponent of n
+// multiply by 6 (6 sides to a cube)
+
+function howManyStickers(n) {
+	let sideStickers = n*n;
+    console.log(sideStickers * 6);
+}
+
+howManyStickers(14)
 
