@@ -232,3 +232,52 @@ function howManyStickers(n) {
 }
 
 howManyStickers(14);
+
+//
+// *****************************************************************************************************************************************************// *****************************************************************************************************************************************************
+
+// *****************************************************************************************************************************************************
+
+// *****************************************************************************************************************************************************
+
+// *****************************************************************************************************************************************************
+// *****************************************************************************************************************************************************
+// *****************************************************************************************************************************************************
+
+//
+
+// Write a function that will return if string is a palindrome
+// G - return if string is a palindrome
+// split str into arr
+// reverse arr
+//
+
+function isPalindrome(str) {
+  return str.split("").reverse().join("") === str;
+}
+
+console.log(isPalindrome("racecar"));
+
+// write a function that will return min and max number in arr
+// G - return min and max number in arr
+
+function minMax(arr) {
+  let min = Math.min(...arr);
+  let max = Math.max(...arr);
+  console.log(min, max);
+}
+
+minMax([1, 5, 6, 54, 12, -5]);
+
+// write a function that will verufyif str has balanced parenthesis
+// Apparently common at higher end companies?
+// G - find out if parenthese is balannced
+// find middle two and see if they are the same,
+// if so remove and check next, if not return not balanced
+//  OR
+// use first and last, if same => shift and pop
+function balancedPar(str1) {
+  let stack = [];
+}
+
+balancedPar("{{()}}");
