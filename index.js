@@ -1,4 +1,5 @@
 
+
 // Write a template string according to the following example:
 // const a = "John";
 // const b = "Joe";
@@ -411,3 +412,109 @@ function fizzBuzz(n){
 
 
 fizzBuzz(15)
+
+// Given an integer num, return the number of steps to reduce it to zero.
+// In one step, if the current number is even, you have to divide it by 2, otherwise, you have to subtract 1 from it.
+// G- Find out how many steps it will take to get to 0
+// init step var
+// Using a for loop loop through num
+// if % 2 === 0, divide by 2, else if !0 subtract and add 1 step
+// 
+
+var numberOfSteps = function(num) {
+    let steps = 0;
+    while(num>0){
+        if(num%2 == 0){
+            num/=2;
+            steps += 1;
+        } else if (num%2 !==0){
+            num--;
+            steps+=1;
+        } else{
+            console.log('error');
+        }
+        console.log(steps)
+    }
+    console.log(steps);
+};
+
+numberOfSteps(12868869)
+
+// Longest common prefix
+// Write a function to find the longest common prefix string amongst an array of strings.
+// If there is no common prefix, return an empty string "".
+// G - Find the longest prefix of both words
+// init char var to store common letters
+
+// var longestCommonPrefix = function(strs) {
+//     let chars = [];
+//     for(let i =0; i<strs)
+// };
+
+// Given a binary array nums, return the maximum number of consecutive 1's in the array.
+// G - Find the max number of consecutive 1's
+// init counter var 
+// loop through array
+// check if nums[i +1] === 1, if so counter++, if not counter=0
+function  findMaxConsecutiveOnes(nums) {
+    let counter = nums[0];
+    let maxCounter = counter;;
+    for(let i=0; i<nums.length; i++){
+            if(nums[i+1] === 1){
+            counter+=1;
+            console.log('adding1')
+            if(maxCounter < counter){
+                maxCounter=counter;
+            }
+            ;
+        } else if(nums[i+1] === 0){
+            counter = 0
+            console.log('restart!')
+            
+        }
+        
+    }
+    console.log(counter)
+    console.log(maxCounter)
+};
+
+findMaxConsecutiveOnes([1])
+
+// Given an array nums of integers, return how many of them contain an even number of digits.
+// G - Find the number of ints given that are even number
+// init evenDig var
+// loop through array, check each to see if even number
+
+function findNumbers(nums){
+let evenDig = 0;
+for(let i=0; i<nums.length; i++){
+    if(nums[i].toString().length % 2 ===0){
+        evenDig+=1
+    }else {
+        continue
+    }
+}
+console.log(evenDig)
+
+}
+findNumbers([555,901,482,1771])
+
+// Given an integer array nums sorted in non-decreasing order, return an array of the squares of each number sorted in non-decreasing order.
+// G - return array of the squares in non-decreasing (accending)order
+// init square arr
+// loop through nums 
+// init squared varå
+// squaring each num as you go while pushing squared to square arr
+// sort squaredArr by looping through arr and using iff 
+
+function sortedSquares(nums){
+let squaredArr = [];
+for(let i = 0; i< nums.length; i++){
+    let newSquared = nums[i]*nums[i];
+    squaredArr.push(newSquared)
+}
+console.log(squaredArr)
+squaredArr.sort();
+console.log(squaredArr)
+}
+sortedSquares([-7,-3,2,3,11])
