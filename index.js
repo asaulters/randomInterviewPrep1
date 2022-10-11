@@ -507,14 +507,53 @@ findNumbers([555,901,482,1771])
 // squaring each num as you go while pushing squared to square arr
 // sort squaredArr by looping through arr and using iff 
 
-function sortedSquares(nums){
-let squaredArr = [];
-for(let i = 0; i< nums.length; i++){
-    let newSquared = nums[i]*nums[i];
-    squaredArr.push(newSquared)
-}
-console.log(squaredArr)
-squaredArr.sort();
-console.log(squaredArr)
-}
-sortedSquares([-7,-3,2,3,11])
+// function sortedSquares(nums){
+// let squaredArr = [];
+// for(let i = 0; i< nums.length; i++){
+//     let newSquared = nums[i]*nums[i];
+//     squaredArr.push(newSquared)
+// }
+// console.log(squaredArr)
+// let sortedArr = squaredArr.sort(function(a,b){return a-b})
+
+// console.log(sortedArr)
+// return sortedArr
+// }
+// sortedSquares([-4,-1,0,3,10])
+
+// Given a fixed-length integer array arr, duplicate each occurrence of zero, shifting the remaining elements to the right.
+// G - add a extra 0 at index of every 0 +1
+// loop through, check if index === 0 if so splice  another 0 at the i+1 position
+
+function duplicateZeros(arr) {
+    let newArr = arr;
+    let possDups = 0;
+    // newArr.length = arr.length
+    for(let i=0; i<=newArr.length; i++){
+        if (newArr[i] === 0){
+            possDups +=1
+            newArr.splice(i+1, 0, 0)
+
+            i++
+        } 
+        
+    }
+    for(let j=0; j<possDups; j++){
+        if(possDups > 0){
+            newArr.pop()
+        }
+    }
+
+
+
+   console.log(newArr);
+   console.log(newArr.length)
+   console.log(arr.length)
+   console.log(arr)
+
+
+   console.log(possDups)
+};
+
+duplicateZeros([1,0,2,3,0,4,5,0])
+
