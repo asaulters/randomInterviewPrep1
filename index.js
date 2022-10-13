@@ -574,3 +574,85 @@ function removeElement(nums, val) {
 };
 
 removeElement([0,1,2,2,3,0,4,2], 2)
+
+
+// Given an integer array nums sorted in non-decreasing order, remove the duplicates in-place such that each unique element appears only once. 
+// The relative order of the elements should be kept the same.
+// Return k after placing the final result in the first k slots of nums.
+// Do not allocate extra space for another array. You must do this by modifying the input array in-place with O(1) extra memory.
+// G - return array with duplicates removed in ascending order and k, where k == arr.length
+// loop through arr, loop through inside that loop
+// if arr[i] == arr[j] =>  remove j
+// return arr and arr.length
+
+function removeDuplicates (nums) {
+    var indexPointer = 1;
+    for(let i = 0; i<nums.length -1; i++){
+        if (nums[i] !== nums[i+1]){
+            nums[indexPointer] = nums[i+1];
+            indexPointer++
+        }
+    }
+    return indexPointer;
+};
+
+
+removeDuplicates([0,0,1,1,1,2,2,3,3,4])
+
+// Given an array arr of integers, check if there exist two indices i and j such that :
+// G - Find out if there is 2 of the numbers in the array that multiply to make a 3rd
+// loop through array [n], inside that loop again [i], inside loop a 3rd time [j]
+// check if i *j =n
+// if so => return true
+
+function checkIfExist(arr) {
+    for(let n=0;n< arr.length; n++){
+        for(let i=1; i<arr.length; i++){
+            for(let j=2; j<arr.length; j++){
+                if(arr[n] === (arr[i] * arr[j])){
+                    console.log('true')
+                    console.log(arr[n], arr[i], arr[j])
+                } else{
+                    console.log('false')
+                }
+            }
+        }
+    }
+    
+};
+
+checkIfExist([10,2,5,3])
+
+// Given an array arr of integers, check if there exist two indices i and j such that :
+// G - Find out if there is 1 of the numbers in the array that multiply to make a 2rd
+// loop through array [n], inside that loop again [i]
+// check if i *2 =n
+// if so => return true
+
+function checkIfExist(arr) {
+    
+    for(let n=0;n< arr.length; n++){
+        let results = false;
+        for(let i=0; i<arr.length; i++){
+            if(arr[n] !== ( 2* arr[i])){
+                console.log('false');
+                console.log(arr[n], arr[i])
+                i++
+                // return false;
+            } else{
+                console.log('true');
+                console.log(arr[n], arr[i])
+                results = true
+                // return true;
+            }
+        }
+    if(results === true){
+        console.log(results);
+    } else{
+        console.log('false')
+    }
+    }
+    
+};
+
+checkIfExist([10,5,-9,15,3,8,12,-10])
