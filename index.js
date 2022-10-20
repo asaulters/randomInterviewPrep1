@@ -656,3 +656,154 @@ function checkIfExist(arr) {
 };
 
 checkIfExist([10,5,-9,15,3,8,12,-10])
+
+// Given an array of integers arr, return true if and only if it is a valid mountain array.
+// G - check to see if the array is a mountain array - ie [1,2,3,2,1]
+// loop through array using 2 for loops i and j
+// in each j, check if arr[j] is > than arr[i]
+// if so iterate, if not check if less
+// if less iterate and check if the next arr[j] > arr[i]
+
+function validMountainArray(arr) {
+    let mountainSteps= 0;
+    let startOfValley = 0;
+    let valleySteps = 0;
+    let mountain = false;
+
+    if(arr.length < 4 || arr[1] < arr[0]) console.log(false);
+
+    for(let i =1; i<arr.length; i++){
+        if(arr[i-1] == arr[i]){ console.log(false)};
+        if(arr[i-1] > arr[i]){
+            startOfValley = i-1;
+            break;
+        }
+    }
+    for (let i = startOfValley; i<arr.length -1; i++){
+        if(arr[i +1] >= arr[i]){ console.log(false)};
+        mountain = true
+    }
+    console.log(startOfValley)
+console.log(mountain)
+};
+
+validMountainArray([1,2,1,2,1])
+
+
+// Write a function to find the longest common prefix string amongst an array of strings.
+// If there is no common prefix, return an empty string "".
+// G - Find the longest common prefix to the given strings
+// check constraints, return false if any aren't true
+// init commonPre as an empty str to store common prefix
+// loop through array strings with i, j, k
+// use and if statement to compare,
+// if they all === push to commonPre, if not return commonPre
+
+var longestCommonPrefix = function(strs) {
+    let prefix = '';
+    if (strs.length == 0) return prefix;
+    for(let i =0; i< strs[0].length; i++){
+        const character = strs[0][i]
+        for(let j = 0; j<strs.length; j++){
+            if(strs[j][i] !==character) return prefix
+        }
+        prefix += character
+    }
+    return prefix;
+};
+
+
+longestCommonPrefix(["dog","racecar","car"])
+
+// You are given the heads of two sorted linked lists list1 and list2.
+// Merge the two lists in a one sorted list. The list should be made by splicing together the nodes of the first two lists.
+// Return the head of the merged linked list.
+// G - Merge the two lists sorted by splicing together in assending order
+// init new list
+// check first value of both linked lists
+// Whichever is smaller, append to new list and move pointed to the next node in that list, continue
+
+class ListNode {
+    constructor(head = null) {
+        this.head = head
+    }
+}
+
+function mergeTwoLists(list1, list2){
+    const dummy = new ListNode(-Infinity);
+    let prev = dummy;
+
+    while(list1 && list2){
+        if(list1.val <= list2.val){
+            prev.next = list1;
+            prev = list1;
+            list1 = list1.next
+        } else {
+            prev.next = list2;
+            prev= list2;
+            list2 =list2.next
+        }
+    }
+    if(!list1) prev.next=list2;
+    if(!list2) prev.next=list1;
+
+    console.log(dummy.next)
+}
+mergeTwoLists([1,2,4], [1,3,4])
+
+// Write a function that reverses a string. The input string is given as an array of characters s.
+// You must do this by modifying the input array in-place with O(1) extra memory.
+// G - reverse given string by using an inplace modifyer
+
+function reverseString(s) {
+    console.log(s.reverse())
+};
+
+reverseString(["h","e","l","l","o"])
+
+// Given a non-empty array of integers nums, every element appears twice except for one. Find that single one.
+// You must implement a solution with a linear runtime complexity and use only constant extra space.
+// G - Find the int that only appears once in the array
+// init constraints
+// loop through nums arr
+// 
+
+function singleNumber(nums) {
+    const ht = {};
+    if(nums.length<1) return 0;
+    for(num of nums){
+        ht[num] = ht[num] +1||1
+    }
+    for(const key in ht){
+        if(ht[key] === 1){
+            return key
+        }
+    }
+};
+
+// Given an array nums of size n, return the majority element.
+// The majority element is the element that appears more than ⌊n / 2⌋ times. You may assume that the majority element always exists in the array.
+// G - Find the majority element
+// init a hashtable
+// loop through arr [i]
+// looop through arr[i+1], and compare elements
+
+
+function majorityElement(nums) {
+    let ht = {};
+    for(let i=0; i<nums.length; i++){
+        ht[i] = nums.i;
+        console.log(ht)
+        for (let j =1; j<=nums.length; j++){
+            if (nums[i] === nums[j]){
+                // ht +=1;
+                // console.log(ht.i)
+                console.log('true')
+            }  else{
+                console.log('false')
+            }
+        }
+    }
+};
+
+majorityElement([2,2,1,1,1,2,2])
