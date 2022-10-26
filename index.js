@@ -791,22 +791,168 @@ function singleNumber(nums) {
 
 function majorityElement(nums) {
     let ht = {};
-    for(let i=0; i<nums.length; i++){
-        ht[i] = nums.i;
-        console.log(ht)
-        for (let j =1; j<=nums.length; j++){
-            if (nums[i] === nums[j]){
-                // ht +=1;
-                // console.log(ht.i)
-                console.log('true')
-            }  else{
-                console.log('false')
-            }
+    if(nums.length<1) return 0;
+    for(num of nums){
+        ht[num] = ht[num] +1||1
+    }
+    for(const key in ht){
+        if (ht[key] > Math.floor(nums.length / 2)){
+            return key
         }
     }
 };
 
-majorityElement([2,2,1,1,1,2,2])
+majorityElement([2,2,1,1,1,2,2,3,4,4,2,1,1,4,2])
 
+
+// Given an integer array nums of length n, you want to create an array ans of length 2n where ans[i] == nums[i] and ans[i + n] == nums[i] for 0 <= i < n (0-indexed).
+// Specifically, ans is the concatenation of two nums arrays.
+// Return the array ans.
+// G - concat 2 nums arrays
+
+function getConcatenation(nums) {
+    let ans = [];
+    for(let i =0; i<nums.length; i++){
+        ans.push(nums[i]);
+        
+    };
+    for(let i =0; i<nums.length; i++){
+        ans.push(nums[i]);
+        
+    };
+    console.log(ans)
+};
+
+getConcatenation([1,2,1])
+
+
+// Given an array nums. We define a running sum of an array as runningSum[i] = sum(nums[0]…nums[i]).
+// Return the running sum of nums.
+// G - Find the running sum of arr
+// init sumArr
+// deal with constraints
+// loop through nums 
+// on each loop += every i-1
+
+function runningSum(nums){
+for(let i =0;i<nums.length; i++){
+    nums[i] += nums[i-1]
+}
+console.log(nums)
+
+}
+
+runningSum([1,2,3,4])
+
+
+
+// Given the array nums consisting of 2n elements in the form [x1,x2,...,xn,y1,y2,...,yn].
+// Return the array in the form [x1,y1,x2,y2,...,xn,yn].
+// G - return arr with given order using nums and n -> half way point
+// init newArr
+// loop through array, add nums[0] then nums[i+n]
+
+const shuffle = (nums, n) => {
+    let newArr =[];
+    for(let i =0; i<n; i++){
+        newArr.push(nums[i])
+        newArr.push(nums[i+n])
+    }
+    return newArr
+}
+
+shuffle([1,2,3,4,4,3,2,1], 4)
+
+
+// A sentence is a list of words that are separated by a single space with no leading or trailing spaces.
+// You are given an array of strings sentences, where each sentences[i] represents a single sentence.
+// Return the maximum number of words that appear in a single sentence.
+// G - find maximum number of words in a single sentence
+// init maxWords
+// loop over arr
+// foreach index, count split(" ").length
+// if larger than maxWords set maxWords =
+// if not, next
+
+var mostWordsFound = (sentences) =>{
+    let maxWords =0;
+    for(let i =0; i< sentences.length; i++){
+        let wordLength = sentences[i].split(" ").length
+        console.log(wordLength);
+        if(wordLength > maxWords){
+            maxWords=wordLength
+        }
+    }
+    console.log(maxWords)
+};
+
+mostWordsFound(["alice and bob love leetcode","i think so too","this is great thanks very much"])
+
+
+// Given an array of integers nums, return the number of good pairs.
+// A pair (i, j) is called good if nums[i] == nums[j] and i < j.
+// G - Find number of good pairs
+// init goodPair = []
+// loop through using a for loop [i]
+// loop through using another for loop [j]
+// if nums[i] == nums[j] => goodPair.push(i,j)
+
+var numIdenticalPairs = (nums) => {
+    let goodPair = 0;
+    for(let i =0; i<nums.length; i++){
+        for(let j=1; j<nums.length; j++){
+            if(i<j){
+                if(nums[i] == nums[j]){
+                    goodPair +=1
+                }
+            } 
+        }
+    }
+    console.log(goodPair)
+};
+
+numIdenticalPairs([1,2,3,1,1,3])
+
+// There are n kids with candies. You are given an integer array candies, where each candies[i] represents the number of candies 
+// the ith kid has, and an integer extraCandies, denoting the number of extra candies that you have.
+// Return a boolean array result of length n, where result[i] is true if, after giving the ith kid all the extraCandies, they will have the greatest number of candies among all the kids, or false otherwise.
+// Note that multiple kids can have the greatest number of candies.
+// G - Find the kids with the greatest amount of candies if given the extra
+// init greatestArr = [];
+// loop thourgh candies using a for loop [i]
+// loop again using a for loop [j]
+// check if candies[i] +3 > candies[j] => if so greatestArr.push(true) else push false
+
+
+var kidsWithCandies = (candies, extraCandies) => {
+    if(candies.length > 2){
+        let greatestArr = [];
+        for (let i = 0; i<candies.length; i++){
+            let greaterArr =[]
+            for(let j = 1; j<candies.length -1; j++){
+                let greatIf;
+                if(candies[i]+3 > candies[j]){
+                    greatIf = true
+                } else{
+                    greatIf = false
+                }
+                if(greatIf === true){
+                    greaterArr.push('true')
+                } else {
+                    greaterArr.push('false')
+                }
+            }
+            if (greaterArr.includes('false')){
+                greatestArr.push('false')
+            } else {
+                greatestArr.push('true')
+            }
+        }
+        console.log(greatestArr)
+    }
+
+};
+
+kidsWithCandies([12,1,12], 10)
 
 
