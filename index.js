@@ -924,35 +924,38 @@ numIdenticalPairs([1,2,3,1,1,3])
 // check if candies[i] +3 > candies[j] => if so greatestArr.push(true) else push false
 
 
-var kidsWithCandies = (candies, extraCandies) => {
-    if(candies.length > 2){
-        let greatestArr = [];
-        for (let i = 0; i<candies.length; i++){
-            let greaterArr =[]
-            for(let j = 1; j<candies.length -1; j++){
-                let greatIf;
-                if(candies[i]+3 > candies[j]){
-                    greatIf = true
-                } else{
-                    greatIf = false
-                }
-                if(greatIf === true){
-                    greaterArr.push('true')
-                } else {
-                    greaterArr.push('false')
-                }
-            }
-            if (greaterArr.includes('false')){
-                greatestArr.push('false')
-            } else {
-                greatestArr.push('true')
-            }
-        }
-        console.log(greatestArr)
-    }
 
+var kidsWithCandies = (candies, extraCandies) => {
+const max = Math.max(...candies);
+return candies.map(items => item + extraCandies >= max)
 };
 
 kidsWithCandies([12,1,12], 10)
 
+// Given the array nums, for each nums[i] find out how many numbers in the array are smaller than it. 
+// That is, for each nums[i] you have to count the number of valid j's such that j != i and nums[j] < nums[i].
+// Return the answer in an array.
+// G - for each number, how many numbers in the arr are smaller than it. return in an arr
+// init ans arr
+// loop through with a for loop [i]
+// init bigger var
+// loop through again [j]
+// if i > j biggerVar ++
 
+
+
+var smallerNumbersThanCurrent = (nums) => {
+    let ansArr = [];
+    for (let i =0; i<nums.length; i++){
+        let biggerVar =0;
+        for(let j=1; j<nums.length; j++){
+            if(nums[i] > nums[j]){
+                biggerVar ++
+            }
+        }
+        console.log(biggerVar)
+    }
+
+};
+
+smallerNumbersThanCurrent([8,1,2,2,3])
