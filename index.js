@@ -959,3 +959,19 @@ var smallerNumbersThanCurrent = (nums) => {
 };
 
 smallerNumbersThanCurrent([8,1,2,2,3])
+
+var createTargetArray = (nums, index) => {
+    let newArr = [];
+
+    for (let i= 0; i<nums.length; i++){
+        let num = nums[i];
+        let idx = index[i]
+        newArr.splice(idx, 0, num)
+        console.log(newArr)
+    }
+
+    console.log(newArr)
+};
+
+createTargetArray([0,1,2,3,4], [0,1,2,2,1])
+
