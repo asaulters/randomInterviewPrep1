@@ -975,3 +975,27 @@ var createTargetArray = (nums, index) => {
 
 createTargetArray([0,1,2,3,4], [0,1,2,2,1])
 
+
+// 1528. Shuffle StringYou are given a string s and an integer array indices of the same length. 
+// The string s will be shuffled such that the character at the ith position moves to indices[i] in the shuffled string.
+// Return the shuffled string.
+// G - Return shuffled string in the order given in the indices
+// init newArr
+// loop through s
+// init str at s[i] and idx at indices[i]
+// splice
+
+var restoreString = (s, indices) => {
+    let newArr =[];
+    if(s.length !== indices.length || s.length <1) return;
+    for(let i =0;i<s.length; i++){
+        let str = s[i];
+        let idx = indices[i]
+        // splice=(start, deleteCount, item)
+
+        newArr[indices[i]] = s.charAt(i)
+    }
+    return newArr.join('')
+};
+
+restoreString("codeleet", [4,5,6,7,0,2,1,3])
