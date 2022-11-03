@@ -999,3 +999,109 @@ var restoreString = (s, indices) => {
 };
 
 restoreString("codeleet", [4,5,6,7,0,2,1,3])
+
+
+// 1773. Count Items Matching a Rule
+// You are given an array items, where each items[i] = [typei, colori, namei] describes the type, color, and name of the ith item. 
+// You are also given a rule represented by two strings, ruleKey and ruleValue.
+// The ith item is said to match the rule if one of the following is true:
+// ruleKey == "type" and ruleValue == typei.
+// ruleKey == "color" and ruleValue == colori.
+// ruleKey == "name" and ruleValue == namei.
+// Return the number of items that match the given rule.
+// G - Find how many items match given rule
+// init matchingItems var
+// loop through items array [i]
+// if items.includes(ruleValue) => matchingItems++
+
+var countMatches = (items, ruleKey, ruleValue) => {
+    let matchingItems =0;
+    let ruleLookup = {
+        "type": 0,
+        "color": 1,
+        "name": 2
+    }
+    if(ruleKey === "type"){
+        for(let i =0; i<items.length; i++){
+
+            if(items[i][0] == ruleValue){
+                matchingItems++
+            }
+        }
+    } else if(ruleKey === "color"){
+        for(let i =0; i<items.length; i++){
+            if(items[i][1] == ruleValue){
+                matchingItems++
+            }
+        }
+    } else if(ruleKey === "name"){
+        for(let i =0; i<items.length; i++){
+            if(items[i][2] == ruleValue){
+                matchingItems++
+            }
+        }
+    }
+    return matchingItems
+};
+
+countMatches([["phone","blue","pixel"],["computer","silver","lenovo"],["phone","gold","iphone"]], "color", "silver")
+
+// 1588 Sum of all odd length subarrays
+// Given an array of positive integers arr, return the sum of all possible odd-length subarrays of arr.
+// A subarray is a contiguous subsequence of the array.
+// G - take every possible odd length subarray and return sum
+// init a sum var
+// loop through arr
+// if arr.length
+
+var sumOddLengthSubarrays = (arr) => {
+    let res = 0;
+    for (let i = 1; i<arr.length; i++)
+        arr[i] = arr[i-1]
+    
+    for( let start = 0; start <arr.length; start ++)
+        for(let end = start; end< arr.length; end +=2)
+            res += sumBetween(start, end)
+        
+    
+    return res;
+    function sumBetween(start, end){
+        return arr[end] - (arr[start-1] || 0)
+    }
+};
+
+sumOddLengthSubarrays([1,4,2,5,3])
+
+// 1662. Check if two string arrs are ===
+// Given two string arrays word1 and word2, return true if the two arrays represent the same string, and false otherwise.
+// A string is represented by an array if the array elements concatenated in order forms the string.
+// G - when joined, are the two string arrs the same?
+// if (word1.join('') === (word2.join(''))) return true
+
+var arrayStringsAreEqual = function(word1, word2) {
+    if(word1.join('') === word2.join(''))return true
+    else return false
+};
+
+arrayStringsAreEqual(["abc", "d", "defg"],["abcddefg"]) 
+
+// 2367 Number of Arithmetic Triplets
+// You are given a 0-indexed, strictly increasing integer array nums and a positive integer diff. A triplet (i, j, k) 
+// is an arithmetic triplet if the following conditions are met:
+// G - find out if there are 3 numbers that fit the diff.
+// loop through array [i]
+// loop through array again [j]
+// if j - i = diff -> loop again [k]
+// if k - j == diff => return true
+
+var arithmeticTriplets = (nums, diff) => {
+    let matches = 0;
+    for( let i =0; i< nums.length; i++){
+        if (nums.find(nums[i] - diff) ){
+            console.log('found 1')
+        }
+    }
+    console.log(matches)
+};
+
+arithmeticTriplets([0,1,4,6,7,10])
