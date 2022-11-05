@@ -1105,3 +1105,49 @@ var arithmeticTriplets = (nums, diff) => {
 };
 
 arithmeticTriplets([0,1,4,6,7,10])
+
+// 804 Unique Morris Code Words
+// Given an array of strings words where each word can be written as a concatenation of the Morse code of each letter.
+// Return the number of different transformations among all words we have.
+// G - Find how many DIFFerent transformation are there among words given
+// transform to morris code function
+// iterate through word array => transform => put into {}
+
+var uniqueMorseRepresentations = function(words) {
+    let differentCodes = 1;
+    function transform(str){
+        const key= [".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."]
+        const output =[];
+        const input = str.split('');
+
+        const alphabet = "abcdefghijklmnopqrstuvwxyz".split('');
+        for(let i=0; i< alphabet.length; i++){
+            for (let j =0; j< input.length; j++){
+                if (input[j] == alphabet[i]){
+                    console.log(i);
+                    console.log(j)
+                    output.push(key[i])
+                }
+            }
+
+        }
+        return output.join('');
+
+    }
+    let transformCollection = [];
+
+    for (word of words){
+        let morrisCode = transform(word);
+        if(!transformCollection.includes(morrisCode)){
+            transformCollection.push(morrisCode)
+
+        }
+        console.log(morrisCode)
+        
+    }
+    console.log(transformCollection)
+    return transformCollection.length;    
+};
+
+uniqueMorseRepresentations(["gin","zen","gig","msg"])
+
