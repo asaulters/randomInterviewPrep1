@@ -1154,3 +1154,81 @@ var uniqueMorseRepresentations = function(words) {
 
 uniqueMorseRepresentations(["gin","zen","gig","msg"])
 
+
+// 118. Pascal's Triangle
+// Given an integer numRows, return the first numRows of Pascal's triangle.
+// In Pascal's triangle, each number is the sum of the two numbers directly above it
+// G - find the first row
+// We are able to know the first and last int on each row are 1s
+// do contengicies
+// init triangle var =[[1]]
+// loop through numRow [i] for a for loop
+// init prevRow = [i-1]
+// init curRow = [[]]
+// curRow.push(1)
+// loop through curRow [j]
+// curRow[j] = prevRow[j] prevRow[j-1]
+// end loop
+// curRow.push(1)
+// push curRow to triangle
+
+var generate = (numRows) => {
+    if (numRows < 1) return [];
+    if (numRows === 1) return [[1]];
+    const triangle = [[1]];
+    for (let i = 1; i< numRows; i++){
+        let prevRow = triangle[i - 1];
+        const curRow =[];
+        curRow.push(1);
+        for(let j =1; j<prevRow.length; j++){
+            curRow[j] = prevRow[j] + prevRow[j-1];
+            
+        }
+        curRow.push(1);
+        triangle.push(curRow);
+    }
+    return triangle;
+};
+
+generate(5)
+
+// 242 Valid Anagram
+// Given two strings s and t, return true if t is an anagram of s, and false otherwise.
+// An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.
+// G - if letters are rearranged, will they === eachother
+// constraints
+// split.sort.join both
+// compare
+
+var isAnagram = (s, t) => {
+    if(s.length !== t.length) return false;
+    let sSort = s.split('').sort().join('');
+    let tSort = t.split('').sort().join('')
+    return sSort === tSort;
+};
+
+isAnagram("anagram", "nagaram")
+
+
+// 387 First unique char in a String
+// Given a string s, find the first non-repeating character in it and return its index. If it does not exist, return -1.
+// G - find index of first unique char
+// init uniqueCar var and leave undefined
+// loop through string
+// init curLetter
+// loop thourhg again [j] [i+1]
+// if curLetter === j return i
+
+var firstUniqChar = (s) => {
+    let uniqueCar = -1;
+    for (let i=0; i<s.length; i++){
+        for (let j = 1; j< s.length; j++){
+            if (s[i] !== s[j]){
+                return s[i]
+            }
+        }
+    }
+    return uniqueCar
+};
+
+firstUniqChar("loveleetcode")
