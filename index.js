@@ -29,6 +29,8 @@ function format(a, b, c) {
 // add to current var
 
 
+
+
 function futurePeople(population, n) {
     let a = n*360;
     let total = population + a;
